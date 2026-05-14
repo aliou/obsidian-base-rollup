@@ -1,21 +1,21 @@
 # Base Rollup
 
-Base Rollup is an Obsidian plugin that registers a custom Bases table view.
+Base Rollup is an Obsidian plugin that registers a custom Bases view type (`rollup-table`).
 
-The view renders Base query results in a table-like layout and writes an aggregate value back to the note that embeds the Base. This is useful for keeping frontmatter properties, such as `sources`, in sync with the current Base result set.
+The view renders Base query results in a table with grouping, links, and column resizing, and writes an aggregate value back to the frontmatter of the note that embeds the Base. This is useful for keeping frontmatter properties, such as `sources`, in sync with the current Base result set.
 
 ## Features
 
 - Custom Bases view type: `rollup-table`.
-- Configurable target frontmatter property on the embedding note.
-- Aggregations:
-  - number of rows
-  - sum
-  - average
-  - minimum
-  - maximum
-- Optional source property for numeric aggregations.
-- Basic table rendering with grouping, links, and column resizing.
+- Configurable target frontmatter property on the embedding note (defaults to `rollup`).
+- Aggregations (`aggregation` option):
+  - `rowCount` — number of rows (default)
+  - `sum` — sum of numeric values
+  - `avg` — average of numeric values
+  - `min` — minimum of numeric values
+  - `max` — maximum of numeric values
+- Optional `sourceProperty` for numeric aggregations (hidden automatically when `rowCount` is selected).
+- Table rendering with group headings, wikilinks, and resizable columns.
 
 ## Usage
 
@@ -29,16 +29,16 @@ views:
     aggregation: rowCount
     order:
       - file.name
-      - Author
-      - Date
-      - Type
+      - note.Author
+      - note.Date
+      - note.Type
 ```
 
 For numeric aggregations, set `aggregation` and `sourceProperty`:
 
 ```yaml
 aggregation: sum
-sourceProperty: formula.score
+sourceProperty: note.score
 ```
 
-The target property is written to the note that embeds the Base.
+If `targetProperty` is omitted, it defaults to `rollup`. The target property is written to the frontmatter of the note that embeds the Base.
