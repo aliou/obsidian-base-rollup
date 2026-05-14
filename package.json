@@ -1,26 +1,33 @@
 {
-	"name": "obsidian-base-rollup",
-	"version": "0.1.0",
-	"description": "Obsidian Bases view that writes aggregate values back to the embedding note.",
-	"main": "main.js",
-	"type": "module",
-	"scripts": {
-		"dev": "vite build --watch",
-		"build": "vite build",
-		"build:prod": "BUILD_CHANNEL=prod vite build",
-		"lint": "eslint ."
-	},
-	"keywords": [
-		"obsidian",
-		"bases",
-		"rollup"
-	],
-	"license": "0-BSD",
-	"devDependencies": {
-		"@aliou/vite-plugin-obsidian": "^0.1.0",
-		"@types/node": "^22.12.0",
-		"obsidian": "latest",
-		"typescript": "^5.8.3",
-		"vite": "^7.2.0"
-	}
+  "name": "obsidian-base-rollup",
+  "version": "0.1.0",
+  "description": "Obsidian Bases view that writes aggregate values back to the embedding note.",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "build:prod": "BUILD_CHANNEL=prod vite build",
+    "lint": "biome check",
+    "format": "biome check --write",
+    "check:lockfile": "pnpm install --frozen-lockfile --ignore-scripts",
+    "prepare": "[ -d .git ] && husky || true"
+  },
+  "keywords": [
+    "obsidian",
+    "bases",
+    "rollup"
+  ],
+  "license": "0-BSD",
+  "packageManager": "pnpm@10.28.0",
+  "devDependencies": {
+    "@aliou/biome-plugins": "^0.8.0",
+    "@aliou/vite-plugin-obsidian": "^0.1.0",
+    "@biomejs/biome": "^2.4.11",
+    "@types/node": "^22.12.0",
+    "husky": "^9.1.7",
+    "obsidian": "latest",
+    "typescript": "^5.8.3",
+    "vite": "^7.2.0"
+  }
 }
