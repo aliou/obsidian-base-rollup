@@ -10,7 +10,10 @@ Base Rollup is an Obsidian plugin that registers a custom Bases view. The view r
 - `src/main.ts` should only contain plugin registration and lifecycle code.
 - Keep view rendering logic in `src/RollupBasesView.ts`.
 - Keep option definitions and pure helpers in separate modules.
+- Dev builds use plugin ID `base-rollup-dev` and name `Base Rollup (dev)`.
+- Production builds use plugin ID `base-rollup` and name `Base Rollup`.
 - Run `npm run build` before committing changes.
+- Run `npm run build:prod` before creating release artifacts.
 
 ## Release files
 
