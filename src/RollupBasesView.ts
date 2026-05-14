@@ -137,9 +137,13 @@ export class RollupBasesView extends BasesView {
 			attr: { "data-property-type": this.getPropertyType(column) },
 		});
 
+		if (value) {
+			value.renderTo(metadataEl, this.app.renderContext);
+			return;
+		}
+
 		metadataEl.createDiv({
 			cls: "metadata-input-longtext",
-			text: this.stringifyValue(value),
 			attr: { placeholder: "Empty" },
 		});
 	}
